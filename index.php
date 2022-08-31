@@ -15,20 +15,29 @@ include "upload.php";
 </head>
 
 <body>
-    <form action="upload.php" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <button type="submit" name="submit">Uppload</button>
-    </form>
 
-    <div id="galary">
-
+    <div class="content">
         <?php
-        foreach (glob("uploads/*.mp3") as $image) {
-            echo "<audio controls  muted class = 'music'>";
-            echo "<source src='$image' class = 'music' type ='audio/mp3' ><br>";
-            echo "</audio>";
-        }
+        include "nav-bar.php";
         ?>
+
+        <div id="galary">
+
+            <?php
+            foreach (glob("uploads/*.mp3") as $soundUrl) {
+                echo "<audio controls  muted class = 'music'>";
+                echo "<source src='$soundUrl' class = 'music' type ='audio/mp3' ><br>";
+                echo "</audio>";
+            }
+            ?>
+        </div>
+    </div>
+    <div class="upload">
+        <form action="upload.php" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" class="choose-file">
+            <button type="submit" name="submit" class="submit">Uppload</button>
+        </form>
+
     </div>
 
 </body>
