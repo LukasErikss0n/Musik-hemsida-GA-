@@ -35,6 +35,7 @@ include "upload.php";
     <div class="upload">
         <form action="upload.php" method="POST" enctype="multipart/form-data">
             <input type="file" name="file" class="choose-file">
+            <input type="text" name="sound-name">
             <button type="submit" name="submit" class="submit">Uppload</button>
         </form>
 

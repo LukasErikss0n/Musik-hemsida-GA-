@@ -11,8 +11,12 @@
 <body>
     <?php
 
+
+
     if (isset($_POST['submit'])) {
         $file = $_FILES['file'];
+        $name = $_POST['sound-name'];
+
 
         $fileName = $_FILES['file']['name'];
         $fileTmpName = $_FILES['file']['tmp_name'];
@@ -24,6 +28,14 @@
         $fileActualExt = strtolower(end($fileExt));
 
         $allowed = array('jpg', 'jpeg', 'png', 'pdf', 'mp3');
+
+        $insertName = "insert into audio_detailes (name_audio) values('$name')";
+        $runName = mysqli_query($con, $insertName);
+
+        $grapName = "SELECT id, name_audio from audio_detailes";
+        $result = $con->query($grapName);
+        echo $result->num_rows;
+
 
         if (in_array($fileActualExt, $allowed)) {
             if ($fileError === 0) {
@@ -42,6 +54,7 @@
             echo "you cannot upload files of this type";
         }
     }
+
     ?>
 
 
