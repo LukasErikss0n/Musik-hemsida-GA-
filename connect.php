@@ -1,30 +1,33 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "test";
 
-$con = new mysqli($servername, $username, $password, $db);
-
-if ($con->connect_error) {
-  die("connection failed:" . $con->connect_error);
-}
+include "server-connect.php";
+include "upload.php";
 
 
-//$sql = "SELECT id, namn from martins_test";
-//$result = $con->query($sql);
 
-$grapName = "SELECT id, name_audio from audio_detailes";
-$result = $con->query($grapName);
+$grabTitle = "SELECT id, file_name, name_audio from audio_detailes";
+$result = $con->query($grabTitle);
 
-if ($result) {
-  while ($row = $result->fetch_row()) {
-    printf("%s (%s)\n", $row[0], $row[1]);
+
+$sound = [];
+if (mysqli_num_rows($result) > 0) {
+  while ($obj = mysqli_fetch_assoc($result)) {
+    $name = $obj['name_audio'];
+    $id = $obj['id'];
+    $fileName = $obj['file_name'];
+
+    $sound = [$fileName => $name];
+
+    foreach ($sound as $files => $nameOfAudio) {
+      echo $nameOfAudio;
+      echo "<audio controls  muted class = 'music'>";
+      echo "<source src='$soundUrl' class = 'music' type ='audio/mp3' ><br>";
+      echo "</audio>";
+    }
   }
-  $result->free_result();
 }
+$result->free_result();
 
 
-//echo $result->num_rows;
 
 $con->close();

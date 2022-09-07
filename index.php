@@ -1,8 +1,3 @@
-<?php
-include "connect.php";
-include "upload.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,11 +19,9 @@ include "upload.php";
         <div id="galary">
 
             <?php
-            foreach (glob("uploads/*.mp3") as $soundUrl) {
-                echo "<audio controls  muted class = 'music'>";
-                echo "<source src='$soundUrl' class = 'music' type ='audio/mp3' ><br>";
-                echo "</audio>";
-            }
+            include "connect.php";
+
+
             ?>
         </div>
     </div>
@@ -40,7 +33,6 @@ include "upload.php";
         </form>
 
     </div>
-
 </body>
 
 </html>

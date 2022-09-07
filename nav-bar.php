@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <h3>music.com</h3>
+    <h3>Musican</h3>
     <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">Intro</a></li>

@@ -11,38 +11,29 @@
 <body>
     <?php
 
-
-
+    include "server-connect.php";
     if (isset($_POST['submit'])) {
         $file = $_FILES['file'];
-        $name = $_POST['sound-name'];
+        $title = $_POST['sound-name'];
 
 
         $fileName = $_FILES['file']['name'];
-        $fileTmpName = $_FILES['file']['tmp_name'];
+        $fileTempName = $_FILES['file']['tmp_name'];
         $fileSize = $_FILES['file']['size'];
         $fileError = $_FILES['file']['error'];
         $fileType = $_FILES['file']['type'];
 
-        $fileExt = explode('.', $fileName);
-        $fileActualExt = strtolower(end($fileExt));
+        $fileExtensionUpper = explode('.', $fileName);
+        $fileActualExtensionLower = strtolower(end($fileExtensionUpper));
 
-        $allowed = array('jpg', 'jpeg', 'png', 'pdf', 'mp3');
+        $allowed = array('mp3'); //en array ifallat flera alt ska läggas till 
 
-        $insertName = "insert into audio_detailes (name_audio) values('$name')";
-        $runName = mysqli_query($con, $insertName);
-
-        $grapName = "SELECT id, name_audio from audio_detailes";
-        $result = $con->query($grapName);
-        echo $result->num_rows;
-
-
-        if (in_array($fileActualExt, $allowed)) {
+        if (in_array($fileActualExtensionLower, $allowed)) {
             if ($fileError === 0) {
                 if ($fileSize < 50000000) {
-                    $fileNameNew = uniqid('', true) . "." . $fileActualExt;
-                    $fileDestination = 'uploads/ ' . $fileNameNew;
-                    move_uploaded_file($fileTmpName, $fileDestination);
+                    $fileId = uniqid('', true) . "." . $fileActualExtensionLower;
+                    $fileDestination = 'uploads/ ' . $fileId;
+                    move_uploaded_file($fileTempName, $fileDestination);
                     header("location: index.php?upploadsuccess");
                 } else {
                     echo "your file is to big";
@@ -53,6 +44,9 @@
         } else {
             echo "you cannot upload files of this type";
         }
+
+        $insertTitle = "insert into audio_detailes (name_audio, file_name) values('$title', '$fileId')";
+        $appendTitle = mysqli_query($con, $insertTitle);
     }
 
     ?>
