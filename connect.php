@@ -19,10 +19,9 @@ if (mysqli_num_rows($result) > 0) {
     $sound = [$fileName => $name];
     
     foreach ($sound as $files => $nameOfAudio) {
-      //echo $nameOfAudio;
       $src = "audios/" . $files;
-      echo $nameOfAudio;
-      echo "<audio controls autoplay muted class='music'>";
+      echo "<p class ='display-name'>$nameOfAudio</p>";
+      echo "<audio controls muted class='music'>";
       echo "<source src='$src' class='music' type='audio/mpeg'>";
       echo "</audio>";
     }
