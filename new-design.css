@@ -7,7 +7,8 @@
 }
 
 body{
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    background-color: #121e28;
+    /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);*/
 }
 
 #galary{
@@ -20,15 +21,16 @@ body{
 
 :root{
     --font-ibm: IBM Plex Mono;
+    --text-color: #ffe000;
 }
 
 .music{
-    margin-bottom: 5px;
+    margin-bottom: 26px;
     width: 100%;
     border: 2px solid #ffffffad;
     border-radius: 34px;
     background-color: #403e3e;
-    box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(255 255 255 / 24%) 0px -12px 30px, rgb(255 255 255 / 25%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px, rgb(0 0 0 / 9%) 0px -3px 5px;
+    box-shadow:rgb(0 0 0 / 18%) 0px 54px 55px, rgb(255 255 255 / 11%) 0px -12px 30px, rgb(255 255 255 / 10%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px, rgb(0 0 0 / 0%) 0px -3px 5px
 }
 
 button{
@@ -43,7 +45,7 @@ button{
 }
 
 .wrapper{
-    background-color: black;
+    background-color: #0b3b64;
     width: 26%;
     height: 100vh;
     text-align: center;
@@ -57,41 +59,52 @@ button{
     list-style: none;
     width: 187px;
     font-size: 32px;
+    margin-bottom: 22px;
     
 }
 
 h3{
     font-family: var(--font-ibm);
-    color: #00ff3b;
+    color:var(--text-color);
     font-size: 35px;
     padding: 11px 25px;
 }
 .wrapper ul li a{
     text-decoration: none;
-    color: rgb(1 185 237);
+    color: rgb(255 255 255);
     font-family: var(--font-ibm);
-    font-size: 22px;
+    font-size: 33px;
+    font-weight: bold;
+    background-color: #0f3556;
+    padding: 10px 20px;
+    border-radius: 25px;
 
 }
 
-.wrapper ul li:hover{
-    background-color: rgb(4, 2, 66);
-    border-radius: 10px;
+.wrapper ul li a:hover{
+    background-color: #1766ac;
+
 }
 
 audio::-webkit-media-controls-panel{
-    background-color: rgb(40, 4, 123) ;
+    background-color: rgb(61, 61, 61) ;
 }
 
 audio::-webkit-media-controls-mute-button{
-    background-color: rgb(26, 4, 95);
+    background-color: rgb(105, 105, 105) ;
     border-radius: 10px;
 }
 
 audio::-webkit-media-controls-play-button{
-    background-color: rgb(26, 4, 95);
+    background-color: rgb(105, 105, 105) ;
     border-radius: 10px;
 }
+
+audio::-webkit-media-controls-volume-slider {
+    border-radius: 25px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 
 audio::-webkit-media-controls-current-time-display{
     color: rgb(255, 255, 255);
@@ -125,7 +138,8 @@ audio::-webkit-media-controls-time-remaining-display{
 .display-name{
     font-size: 20px;
     font-family: var(--font-ibm);
-    color: #00ff3b;
+    color:var(--text-color);
+    font-weight: bold;
 }
 
 .label-file{
@@ -133,7 +147,7 @@ audio::-webkit-media-controls-time-remaining-display{
     border: none;
     margin-top: 20px;
     padding: 5px 5px;
-    background-color: #00ff3b;
+    background-color: rgb(15, 15, 15);
     color: white;
     margin-bottom: 4px;
     /* margin-right: 6px; */
@@ -150,7 +164,7 @@ button:hover{
 .ghost{
     margin-left: -68px;
     padding: 12px 76px;
-    color: #00ff3b;
+    color: white;
 }
 
 .margin{
@@ -163,8 +177,7 @@ input[type=text]{
     border: none;
     margin-top: 20px;
     padding: 10px 12px;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-    background-color: #2c528b;
+    background-color: #121e28;
     color: white;
     margin-bottom: 4px;
     outline: none;
@@ -180,6 +193,11 @@ input[type=submit]:hover{
 }
 
 
+h1{
+    font-family: var(--font-ibm);
+    font-size: 46px;
+}
+
 .main-wrapper{
     display: flex;
     flex-direction: column;
@@ -188,13 +206,13 @@ input[type=submit]:hover{
 }
 
 .onside-menu{
-    background-color: #ffffff40;
-    height: 15vh;
+    background-color: #3d3d3d;
+    height: 8vh;
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    color: #00eb36;
+    color: #ffffff;
     border-bottom: 1px solid;
 }
 
@@ -209,13 +227,39 @@ input[type=submit]:hover{
 
 .onside-menu ul li{
     margin-right: 20px;
-
+    text-decoration: none;
+    color: rgb(255 255 255);
+    font-family: var(--font-ibm);
+    font-size: 31px;
+    font-weight: bold;
+    padding: 3px 16px;
+    background-color: red;
+    border-radius: 15px;
+    
 }
+
+.onside-menu ul a{
+    text-decoration: none;
+}
+
+
+.onside-menu ul li:hover{
+    background-color: rgb(39, 37, 37);
+    border-radius: 15px;
+}
+
 
 .side{
     margin-left: 40px;
 }
 
 form{
-    margin-bottom: 13px;
+    background-color: #0b3b6461;
+    padding: 10px 20px;
+}
+
+.art-img{
+    width: 176px;
+    margin-bottom: 60px;
+    margin-left: 46px;
 }

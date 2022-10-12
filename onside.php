@@ -1,5 +1,5 @@
 <h1>Home</h1>
 <ul>
-    <li>Alt 1</li>
-    <li>Alt 2</li>
+    <a href="intro.php"><li>Intro</li></a>
+    <li><i class="fa-solid fa-right-to-bracket"></i></li>
 </ul>
