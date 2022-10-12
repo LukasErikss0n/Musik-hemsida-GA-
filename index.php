@@ -10,18 +10,13 @@
 </head>
 
 <body>
-
     <div class="content">
         <?php
         include "nav-bar.php";
         ?>
-
         <div id="galary">
-
             <?php
             include "connect.php";
-
-
             ?>
         </div>
     </div>

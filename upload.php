@@ -10,7 +10,6 @@
 
 <body>
     <?php
-
     include "server-connect.php";
     if (isset($_POST['submit'])) {
         $file = $_FILES['file'];
@@ -31,10 +30,14 @@
         if (in_array($fileActualExtensionLower, $allowed)) {
             if ($fileError === 0) {
                 if ($fileSize < 50000000) {
-                    $fileId = uniqid('', true) . "." . $fileActualExtensionLower;
-                    $fileDestination = 'uploads/ ' . $fileId;
+                   $fileId = uniqid('', true) . "." . $fileActualExtensionLower;
+                   //$fileId = $title . "." . $fileActualExtensionLower;
+                    $fileDestination = 'audios/' . $fileId;
                     move_uploaded_file($fileTempName, $fileDestination);
                     header("location: index.php?upploadsuccess");
+                    
+                    $insertTitle = "insert into audio_detailes (name_audio, file_name) values('$title', '$fileId')";
+                    $appendTitle = mysqli_query($con, $insertTitle);
                 } else {
                     echo "your file is to big";
                 }
@@ -45,13 +48,7 @@
             echo "you cannot upload files of this type";
         }
 
-        $insertTitle = "insert into audio_detailes (name_audio, file_name) values('$title', '$fileId')";
-        $appendTitle = mysqli_query($con, $insertTitle);
     }
-
     ?>
-
-
 </body>
-
 </html>

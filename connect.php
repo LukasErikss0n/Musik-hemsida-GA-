@@ -5,7 +5,7 @@ include "upload.php";
 
 
 
-$grabTitle = "SELECT id, file_name, name_audio from audio_detailes";
+$grabTitle = "SELECT id, name_audio, file_name from audio_detailes";
 $result = $con->query($grabTitle);
 
 
@@ -17,11 +17,13 @@ if (mysqli_num_rows($result) > 0) {
     $fileName = $obj['file_name'];
 
     $sound = [$fileName => $name];
-
+    
     foreach ($sound as $files => $nameOfAudio) {
+      //echo $nameOfAudio;
+      $src = "audios/" . $files;
       echo $nameOfAudio;
-      echo "<audio controls  muted class = 'music'>";
-      echo "<source src='$soundUrl' class = 'music' type ='audio/mp3' ><br>";
+      echo "<audio controls autoplay muted class='music'>";
+      echo "<source src='$src' class='music' type='audio/mpeg'>";
       echo "</audio>";
     }
   }
