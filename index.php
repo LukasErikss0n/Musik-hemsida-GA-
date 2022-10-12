@@ -25,16 +25,6 @@
                 include "connect.php";
                 ?>
             </div>
-            <div class="upload">
-                <form action="upload.php" method="POST" enctype="multipart/form-data">
-                <label for="file" class ="label-file side">Välj file</label>
-                <input type="file" name="file" class="ghost">
-                <label for="text" class ="label-file margin">Sound name:</label>
-                <input type="text" name="sound-name" placeholder = "T.ex Piano Music">
-                <button type="submit" name="submit" class="label-file">Uppload</button>
-        </form>
-
-    </div>
         </div>
     </div>
   
