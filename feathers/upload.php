@@ -11,6 +11,8 @@
 <body>
     <?php
     include "server-connect.php";
+    if(isset($_SESSION['username'])){
+        
     if (isset($_POST['submit'])) {
         $file = $_FILES['file'];
         $title = $_POST['sound-name'];
@@ -34,7 +36,7 @@
                    //$fileId = $title . "." . $fileActualExtensionLower;
                     $fileDestination = 'audios/' . $fileId;
                     move_uploaded_file($fileTempName, $fileDestination);
-                    header("location: index.php?upploadsuccess");
+                    header("location: home.php?upploadsuccess");
                     
                     $insertTitle = "insert into audio_detailes (name_audio, file_name) values('$title', '$fileId')";
                     $appendTitle = mysqli_query($con, $insertTitle);
@@ -48,6 +50,10 @@
             echo "you cannot upload files of this type";
         }
 
+    }
+    }
+    else{
+        header("location: ../loggin/index.php?error=noAccountFaund");
     }
     ?>
 </body>

@@ -1,3 +1,7 @@
+<?php
+    include "check-if-session.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
