@@ -11,8 +11,8 @@
 <body>
     <?php
     include "server-connect.php";
-    if(isset($_SESSION['username'])){
-        
+    session_start();
+    echo $_SESSION["user_id"] . "<br>";    
     if (isset($_POST['submit'])) {
         $file = $_FILES['file'];
         $title = $_POST['sound-name'];
@@ -36,10 +36,10 @@
                    //$fileId = $title . "." . $fileActualExtensionLower;
                     $fileDestination = 'audios/' . $fileId;
                     move_uploaded_file($fileTempName, $fileDestination);
-                    header("location: home.php?upploadsuccess");
-                    
-                    $insertTitle = "insert into audio_detailes (name_audio, file_name) values('$title', '$fileId')";
+                    $id = $_SESSION["user_id"];
+                    $insertTitle = "insert into audio_detailes (user_id, name_audio, file_name) values('$id','$title', '$fileId')";
                     $appendTitle = mysqli_query($con, $insertTitle);
+                    header("location: home.php?upploadsuccess");
                 } else {
                     echo "your file is to big";
                 }
@@ -51,10 +51,7 @@
         }
 
     }
-    }
-    else{
-        header("location: ../loggin/index.php?error=noAccountFaund");
-    }
+    
     ?>
 </body>
 </html>
