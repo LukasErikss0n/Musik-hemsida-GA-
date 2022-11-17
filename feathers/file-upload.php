@@ -27,6 +27,18 @@
                 <label for="text" class ="label-file ">Sound name:</label>
                 <input type="text" name="sound-name" placeholder = "T.ex Piano Music">
                 <button type="submit" name="submit" class="label-file">Uppload</button>
+                <?php
+                 if(isset($_GET["error"])) {
+                    if($_GET["error"] === "wrongType"){
+                     echo "<p class = 'error'>*Incorrect file type</p>";
+                    }
+                    else if($_GET["error"] === "error"){
+                    echo "<p class = 'error'>*Error occured, please try again</p>";
+                    }else if($_GET["error"] === " fileToBig"){
+                    echo "<p class = 'error'>*Error occured, please try again</p>";
+                    }   
+                 }                 
+                ?>
             </form>
         </div>
     </div>

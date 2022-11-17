@@ -23,7 +23,7 @@
                 else if($_GET["error"] === "invalid"){
                     echo "<p class = 'error'>*Invalid username or password</p>";
                 }
-                else if($_GET['error'] === "noAccountFaund"){
+                else if($_GET['error'] === "Noaccountfound"){
                     echo "<p class = 'error'>*Pleas loggin before going to the site</p> ";
                 }
             } 

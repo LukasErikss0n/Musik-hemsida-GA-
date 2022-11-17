@@ -11,8 +11,9 @@
 <body>
     <?php
     include "server-connect.php";
-    session_start();
-    echo $_SESSION["user_id"] . "<br>";    
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     if (isset($_POST['submit'])) {
         $file = $_FILES['file'];
         $title = $_POST['sound-name'];
@@ -40,14 +41,17 @@
                     $insertTitle = "insert into audio_detailes (user_id, name_audio, file_name) values('$id','$title', '$fileId')";
                     $appendTitle = mysqli_query($con, $insertTitle);
                     header("location: home.php?upploadsuccess");
-                } else {
-                    echo "your file is to big";
+                } else {                    
+                    header("location: file-upload.php?error=fileToBig");
+                    //echo "your file is to big";
                 }
             } else {
-                echo "there was an error uploading your file";
+                header("location: file-upload.php?error=error");
+                //echo "there was an error uploading your file";
             }
         } else {
-            echo "you cannot upload files of this type";
+            header("location: file-upload.php?error=wrongType");
+           // echo "you cannot upload files of this type";
         }
 
     }
